@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.pktaskslistadetareasjava.controller.TaskListController">
+    <TextField fx:id="taskTitleField" promptText="Título de tarea"/>
+    <TextField fx:id="taskTextField" promptText="Descripción"/>
+    <ListView fx:id="taskListView" prefHeight="200"/>
+    <HBox spacing="10">
+        <Button text="Agregar" onAction="#addTask"/>
+        <Button text="Eliminar" onAction="#removeTask"/>
+    </HBox>
+</VBox>

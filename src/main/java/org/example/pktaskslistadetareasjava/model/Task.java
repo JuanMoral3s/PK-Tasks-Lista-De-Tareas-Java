@@ -25,7 +25,13 @@ public class Task {
 
     @Override
     public String toString() {
-        return title + (status ? " ✔" : " ✘");
+        return title + " | " + text;  // usa '|' para separar título y texto
+    }
+
+    public static Task fromString(String line) {
+        String[] parts = line.split("\\|", 2);
+        if (parts.length < 2) return null;
+        return new Task(parts[0], parts[1]);
     }
 
 }

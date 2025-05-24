@@ -1,11 +1,14 @@
 package org.example.pktaskslistadetareasjava.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.example.pktaskslistadetareasjava.model.Task;
 import org.example.pktaskslistadetareasjava.model.TaskList;
+import org.example.pktaskslistadetareasjava.model.TaskStorage;
 
 public class TaskListController {
 
@@ -20,38 +23,41 @@ public class TaskListController {
     private TextField taskTextField;
 
     //MODELO
-    private TaskList taskList;
+    ObservableList<Task> taskList = FXCollections.observableArrayList();
+
 
     //Inicializar controlador
-    public void initialize(){
-        taskList = new TaskList();
-        taskListView.setItems(javafx.collections.FXCollections.observableArrayList(taskList.getTaskList()));
+    @FXML
+    public void initialize() {
+        taskList.addAll(TaskStorage.loadTasks());
+        taskListView.setItems(taskList);
     }
+
 
     //Agregar tarea
     @FXML
-    private void addTask(){
-        String tittle = taskTitleField.getText().trim();
+    private void addTask() {
+        String title = taskTitleField.getText().trim();
         String text = taskTextField.getText().trim();
-        if(!tittle.isEmpty()){
-            Task newTask = new Task(tittle,text);
-            taskList.addTask(newTask);
-
-            taskListView.getItems().add(newTask);
-
-            taskTextField.clear();
+        if (!title.isEmpty()) {
+            Task newTask = new Task(title, text);
+            taskList.add(newTask);
+            TaskStorage.saveTasks(taskList);
             taskTitleField.clear();
+            taskTextField.clear();
         }
     }
 
     @FXML
-    private void removeTask(){
+    private void removeTask() {
         Task selected = taskListView.getSelectionModel().getSelectedItem();
-        if(selected != null){
-            taskList.removeTask(selected);
-            taskListView.getItems().remove(selected);
+        if (selected != null) {
+            taskList.remove(selected);
+            TaskStorage.saveTasks(taskList);
         }
     }
+
+
 
 
 }

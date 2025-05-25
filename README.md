@@ -2,11 +2,13 @@
 
 **PK-Tasks** es una aplicación de escritorio desarrollada en Java utilizando **JavaFX**. Permite gestionar una lista de tareas de forma intuitiva, visual y eficiente, ideal para organizar actividades personales o académicas.
 
+Ejecutable disponible en el repositorio.
+
 ## 🛠️ Tecnologías utilizadas
 
 - Java 21
 - JavaFX 17
-- Gradle / IntelliJ IDEA (u otro entorno de desarrollo compatible)
+- IntelliJ IDEA 
 - Launch4j (para generar el ejecutable `.exe`)
 
 ## 📦 Estructura del proyecto
@@ -78,8 +80,7 @@ java --module-path "C:\javafx-sdk-17.0.15\lib" --add-modules javafx.controls,jav
 
 **Juan Pablo Vera Morales**  
 Facultad de Ingeniería, UNAM  
-Materia: Programación Orientada a Objetos (POO)  
-Semestre 2025-1
+
 
 ---
 
